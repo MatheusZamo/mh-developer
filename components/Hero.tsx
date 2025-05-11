@@ -19,7 +19,7 @@ const Hero = () => {
       </div>
 
       <div
-        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.02] bg-grid-black/[0.2] 
+        className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.01] bg-grid-black/[0.2] 
        flex items-center justify-center absolute top-0 left-0"
       >
         {/* Radial gradient for the container to give a faded look */}
