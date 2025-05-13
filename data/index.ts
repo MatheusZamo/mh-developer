@@ -19,7 +19,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Disponibilidade para adaptação a diferentes fusos horários",
+    title: "Adaptação a diferentes fusos horários",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
