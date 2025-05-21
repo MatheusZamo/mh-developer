@@ -1,6 +1,7 @@
 import { FaLocationArrow } from "react-icons/fa6"
 import MagicButton from "./ui/MagicButton"
 import { socialMedia } from "@/data"
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -9,10 +10,13 @@ const Footer = () => {
         className="w-full absolute left-0 -bottom-72
       min-h-96"
       >
-        <img
+        <Image
           src="/footer-grid.svg"
           alt="grid"
+          fill
           className="w-full h-full opacity-50"
+          style={{ objectFit: "cover" }}
+          priority
         />
       </div>
 
@@ -59,7 +63,14 @@ const Footer = () => {
             backdrop-blur-lg saturate-180 bg-opacity-75
             bg-black-200 rounded-lg border border-black-300"
             >
-              <img src={profile.img} width={20} height={20} />
+              <Image
+                src={profile.img}
+                alt=""
+                width={20}
+                height={20}
+                className="object-contain"
+                priority
+              />
             </div>
           ))}
         </div>
