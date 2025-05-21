@@ -203,16 +203,20 @@ const ShaderMaterial = ({
     }
     lastFrameTime = timestamp
 
-    const material: any = ref.current.material
+    const material = ref.current.material as THREE.ShaderMaterial
+
     const timeLocation = material.uniforms.u_time
     timeLocation.value = timestamp
   })
 
   const getUniforms = () => {
-    const preparedUniforms: any = {}
+    const preparedUniforms: Record<string, unknown> = {}
 
     for (const uniformName in uniforms) {
-      const uniform: any = uniforms[uniformName]
+      const uniform = uniforms[uniformName] as {
+        value: number | number[] | number[][]
+        type: string
+      }
 
       switch (uniform.type) {
         case "uniform1f":
@@ -220,7 +224,9 @@ const ShaderMaterial = ({
           break
         case "uniform3f":
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
+            value: Array.isArray(uniform.value)
+              ? new THREE.Vector3().fromArray(uniform.value as number[])
+              : new THREE.Vector3(),
             type: "3f",
           }
           break
@@ -229,15 +235,21 @@ const ShaderMaterial = ({
           break
         case "uniform3fv":
           preparedUniforms[uniformName] = {
-            value: uniform.value.map((v: number[]) =>
-              new THREE.Vector3().fromArray(v)
-            ),
+            value: Array.isArray(uniform.value)
+              ? (uniform.value as number[][]).map((v) =>
+                  Array.isArray(v)
+                    ? new THREE.Vector3().fromArray(v)
+                    : new THREE.Vector3()
+                )
+              : [],
             type: "3fv",
           }
           break
         case "uniform2f":
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
+            value: Array.isArray(uniform.value)
+              ? new THREE.Vector2().fromArray(uniform.value as number[])
+              : new THREE.Vector2(),
             type: "2f",
           }
           break
@@ -271,7 +283,10 @@ const ShaderMaterial = ({
       }
       `,
       fragmentShader: source,
-      uniforms: getUniforms(),
+      uniforms: getUniforms() as Record<
+        string,
+        { value: unknown; type: string }
+      >,
       glslVersion: THREE.GLSL3,
       blending: THREE.CustomBlending,
       blendSrc: THREE.SrcAlphaFactor,
@@ -282,7 +297,7 @@ const ShaderMaterial = ({
   }, [size.width, size.height, source])
 
   return (
-    <mesh ref={ref as any}>
+    <mesh ref={ref as React.RefObject<THREE.Mesh>}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>

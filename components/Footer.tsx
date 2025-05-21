@@ -59,7 +59,7 @@ const Footer = () => {
             backdrop-blur-lg saturate-180 bg-opacity-75
             bg-black-200 rounded-lg border border-black-300"
             >
-              <img src={profile.img} alt={profile.id} widrh={20} height={20} />
+              <img src={profile.img} width={20} height={20} />
             </div>
           ))}
         </div>
