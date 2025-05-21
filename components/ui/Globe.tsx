@@ -5,6 +5,7 @@ import ThreeGlobe from "three-globe"
 import { useThree, Canvas, extend } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 import countries from "@/data/globe.json"
+import { Group } from "three"
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: ThreeElements["mesh"] & {
@@ -62,7 +63,7 @@ interface WorldProps {
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null)
-  const groupRef = useRef()
+  const groupRef = useRef<Group | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
 
   const defaultProps = {
@@ -82,11 +83,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   }
 
-  // Initialize globe only once
   useEffect(() => {
     if (!globeRef.current && groupRef.current) {
       globeRef.current = new ThreeGlobe()
-      ;(groupRef.current as any).add(globeRef.current)
+      groupRef.current.add(globeRef.current)
       setIsInitialized(true)
     }
   }, [])
@@ -118,10 +118,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !isInitialized || !data) return
 
     const arcs = data
-    let points = []
+    const points = []
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i]
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number }
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -163,7 +162,12 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
+      .arcColor((e: unknown) => {
+        if (typeof e === "object" && e !== null && "color" in e) {
+          return (e as Position).color
+        }
+        return "#ffffff"
+      })
       .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
       .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
       .arcDashLength(defaultProps.arcLength)
@@ -281,12 +285,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b
   })
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
     ? {
         r: parseInt(result[1], 16),
