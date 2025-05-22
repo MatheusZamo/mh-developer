@@ -71,8 +71,8 @@ const RecentProjects = () => {
                       <Image
                         src={icon}
                         alt="icon5"
-                        width={24}
-                        height={24}
+                        width={40}
+                        height={40}
                         className="p-2"
                         priority
                       />
