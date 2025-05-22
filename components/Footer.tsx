@@ -64,14 +64,16 @@ const Footer = () => {
             backdrop-blur-lg saturate-180 bg-opacity-75
             bg-black-200 rounded-lg border border-black-300"
             >
-              <Image
-                src={profile.img}
-                alt=""
-                width={20}
-                height={20}
-                className="object-contain"
-                priority
-              />
+              <a href={profile.link} target="blank">
+                <Image
+                  src={profile.img}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                  priority
+                />
+              </a>
             </div>
           ))}
         </div>

@@ -173,13 +173,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/MatheusZamo",
   },
   {
     id: 2,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/matheuszamo/",
   },
   {
     id: 3,
     img: "/insta.svg",
+    link: "https://www.instagram.com/matheus.zamo/",
   },
 ]
