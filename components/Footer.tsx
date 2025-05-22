@@ -21,20 +21,21 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
-          Ready to take <span className="text-purple">your</span> digital
-          presence to the next level?
+        <h1 className="heading lg:max-w-[60vw]">
+          Pronto para levar <span className="text-purple">sua</span> presença
+          digital para o próximo nível?
         </h1>
+
         <p
           className="text-white-200 md:mt-10 my-5
         text-center"
         >
-          Reach out to me today and let&apos;s discuss how I can help you
-          achieve your goals.
+          Entre em contato hoje mesmo e vamos discutir como posso ajudar você a
+          atingir seus objetivos.
         </p>
-        <a href="mailto:19matheushenrique03@gmail.com">
+        <a href="https://wa.me/31991826261">
           <MagicButton
-            title="Let's get in touch"
+            title="Entrar em Contato"
             icon={<FaLocationArrow />}
             position="right"
           />
