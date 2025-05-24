@@ -35,19 +35,19 @@ const Hero = () => {
           className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw]
         flex flex-col items-center justify-center"
         >
+          <h2
+            className="text-center md:tracking-wider 
+          mb-4 text-[30px] md:text-3xl lg:text-4xl"
+          >
+            Mh Developer
+          </h2>
           <TextGenerateEffect
             className="text-center text-[40px]
             md:text-5xl lg:text-6xl"
             words="Programando soluções para seus desafios"
           />
 
-          <p
-            className="text-center md:tracking-wider 
-          mb-4 text-sm md:text-lg lg:text-2xl"
-          >
-            Mh Developer
-          </p>
-          <a href="#about">
+          <a href="#projects">
             <MagicButton
               title="Meus Projetos"
               icon={<FaLocationArrow />}

@@ -79,7 +79,6 @@ export const BentoGridItem = ({
                 fill
                 sizes="100vw"
                 style={{ objectFit: "cover", objectPosition: "center" }}
-                priority
               />
             )}
           </div>
@@ -123,7 +122,6 @@ export const BentoGridItem = ({
               fill
               sizes="100vw"
               style={{ objectFit: "cover", objectPosition: "center" }}
-              priority
             />
           )}
         </div>
@@ -140,7 +138,6 @@ export const BentoGridItem = ({
               fill
               sizes="100vw"
               style={{ objectFit: "cover", objectPosition: "center" }}
-              priority
             />
           )}
         </div>

@@ -107,7 +107,6 @@ export const InfiniteMovingCards = ({
                         width={32}
                         height={32}
                         className="rounded-full"
-                        priority
                       />
                     </div>
                   </div>

@@ -16,13 +16,12 @@ const Footer = () => {
           fill
           className="w-full h-full opacity-50"
           style={{ objectFit: "cover" }}
-          priority
         />
       </div>
 
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[60vw]">
-          Pronto para levar <span className="text-purple">sua</span> presença
+          Pronto para levar <span className="text-purple">sua presença </span>
           digital para o próximo nível?
         </h1>
 
@@ -74,7 +73,6 @@ const Footer = () => {
                   width={20}
                   height={20}
                   className="object-contain"
-                  priority
                 />
               </a>
             </div>

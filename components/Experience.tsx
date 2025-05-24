@@ -33,7 +33,6 @@ const Experience = () => {
                 height={128}
                 className="lg:w-32 md:w-20 w-16"
                 style={{ objectFit: "cover" }}
-                priority
               />
 
               <div className="lg:ms-5">
