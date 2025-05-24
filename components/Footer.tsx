@@ -30,8 +30,8 @@ const Footer = () => {
           className="text-white-200 md:mt-10 my-5
         text-center"
         >
-          Entre em contato hoje mesmo e vamos discutir como posso ajudar você a
-          atingir seus objetivos.
+          Entre em contato hoje mesmo e vamos conversar sobre como posso ajudar
+          você a atingir seus objetivos.
         </p>
         <a
           href="https://wa.me/31991826861?text=Olá%21%20Vi%20seus%20serviços%20no%20site%2c%20gostaria%20de%20mais%20mais%20informações%21"
