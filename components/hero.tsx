@@ -6,7 +6,7 @@ import { motion, Variants } from "framer-motion";
 import { ArrowRight, Code, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 
-const HeroSection = () => {
+const Hero = () => {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,7 +44,7 @@ const HeroSection = () => {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900" />
+      <div className="absolute inset-0" />
 
       {/* Animated particles */}
       <div className="absolute inset-0">
@@ -237,4 +237,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;
