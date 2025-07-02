@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, Variants } from "framer-motion";
 import { Code2, Users, Trophy } from "lucide-react";
+import Carousel from "./carousel";
 
 const About = () => {
   const containerVariants: Variants = {
@@ -182,6 +183,7 @@ const About = () => {
             </Card>
           </motion.div>
         </div>
+        <Carousel />
       </motion.div>
     </section>
   );
