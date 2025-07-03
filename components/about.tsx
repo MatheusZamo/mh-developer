@@ -52,40 +52,6 @@ const About = () => {
 
   return (
     <section className="relative overflow-hidden px-4 py-20">
-      {/* Background particles */}
-      <div className="absolute inset-0">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-blue-400/30"
-            initial={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: 0,
-            }}
-            animate={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: [0, 0.7, 0],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 15,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-
       <motion.div
         className="container mx-auto max-w-6xl"
         variants={containerVariants}
