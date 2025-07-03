@@ -61,21 +61,18 @@ export default function ContactSection() {
       label: "GitHub",
       href: "https://github.com/MatheusZamo",
       color: "hover:text-slate-300",
-      description: "Veja meus códigos",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/matheuszamo/",
       color: "hover:text-blue-400",
-      description: "Conecte-se comigo",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
       href: "https://wa.me/5531991826861?text=Olá! Gostaria de conversar sobre um projeto.",
       color: "hover:text-green-400",
-      description: "Chat direto",
     },
   ];
 
@@ -184,9 +181,6 @@ export default function ContactSection() {
                       <social.icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       <span className="text-center text-xs font-medium">
                         {social.label}
-                      </span>
-                      <span className="text-center text-xs text-slate-500">
-                        {social.description}
                       </span>
                     </motion.a>
                   ))}
