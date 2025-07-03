@@ -48,7 +48,7 @@ const Footer = () => {
                 onClick={scrollToTop}
                 variant="outline"
                 size="sm"
-                className="border-slate-700 bg-transparent text-slate-400 hover:border-slate-600 hover:bg-slate-800 hover:text-white"
+                className="cursor-pointer border-slate-700 bg-transparent text-slate-400 hover:border-slate-600 hover:bg-slate-800 hover:text-white"
               >
                 <ArrowUp className="mr-2 h-4 w-4" />
                 Voltar ao Topo

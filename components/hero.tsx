@@ -41,6 +41,16 @@ const Hero = () => {
       },
     },
   };
+
+  const scrollForSection = (id: string) => {
+    const element = document.querySelector(`#${id}`);
+
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background with gradient */}
@@ -185,8 +195,9 @@ const Hero = () => {
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
+              onClick={() => scrollForSection("projects")}
               size="lg"
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/25"
+              className="cursor-pointer bg-gradient-to-r from-blue-500 to-cyan-500 px-8 py-3 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-cyan-600 hover:shadow-blue-500/25"
             >
               Meus Projetos
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -195,9 +206,10 @@ const Hero = () => {
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
+              onClick={() => scrollForSection("contact")}
               variant="outline"
               size="lg"
-              className="border-slate-600 bg-transparent px-8 py-3 text-lg font-semibold text-slate-300 backdrop-blur-sm transition-all duration-300 hover:bg-slate-800 hover:text-white"
+              className="cursor-pointer border-slate-600 bg-transparent px-8 py-3 text-lg font-semibold text-slate-300 backdrop-blur-sm transition-all duration-300 hover:bg-slate-800 hover:text-white"
             >
               <Mail className="mr-2 h-5 w-5" />
               Entre em Contato
@@ -211,14 +223,23 @@ const Hero = () => {
           className="flex justify-center space-x-6"
         >
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
+            {
+              icon: Github,
+              href: "https://github.com/MatheusZamo",
+              label: "GitHub",
+            },
+            {
+              icon: Linkedin,
+              href: "https://www.linkedin.com/in/matheuszamo/",
+              label: "LinkedIn",
+            },
             { icon: Mail, href: "#", label: "Email" },
           ].map((social) => (
             <motion.a
               key={social.label}
               href={social.href}
               variants={socialVariants}
+              target="_blank"
               whileHover={{
                 scale: 1.2,
                 rotate: 5,

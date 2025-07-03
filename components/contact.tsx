@@ -78,7 +78,7 @@ export default function ContactSection() {
 
   return (
     <section
-      id="contato"
+      id="contact"
       className="relative overflow-hidden bg-gradient-to-br px-4 py-20"
     >
       <motion.div
