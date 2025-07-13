@@ -195,7 +195,7 @@ const Projects = () => {
                   {/* Project Images - Otimizada para mobile */}
                   <div className="relative flex items-center justify-center bg-slate-900/30 p-6">
                     <motion.div
-                      className="relative h-[200px] max-w-full"
+                      className="relative max-w-full"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={
                         isVisible
