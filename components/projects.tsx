@@ -90,7 +90,7 @@ const Projects = () => {
       description:
         "O Dr. Agenda é uma plataforma para gestão eficiente de clínicas, com médicos, pacientes, agendamentos, dashboard analítico e integração de assinaturas via Stripe.",
       image: "/doctor.png",
-      liveUrl: "https://self-checkout-rust.vercel.app/mcdonalds",
+      liveUrl: "https://doutor-agenda-delta.vercel.app/",
       icons: [
         "next.svg",
         "typescript.svg",
