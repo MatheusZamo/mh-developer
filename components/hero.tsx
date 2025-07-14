@@ -1,12 +1,28 @@
 "use client";
 
 import { Badge } from "./ui/badge";
-
 import { motion, Variants } from "framer-motion";
 import { ArrowRight, Code, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
+
+interface Particle {
+  id: string;
+  x: number;
+  y: number;
+  initialX: number;
+  initialY: number;
+  animateX: number;
+  animateY: number;
+  duration: number;
+  delay: number;
+  type: "large" | "small";
+}
 
 const Hero = () => {
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [mounted, setMounted] = useState(false);
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,6 +58,66 @@ const Hero = () => {
     },
   };
 
+  // Gerar partículas apenas no cliente
+  useEffect(() => {
+    const generateParticles = (): Particle[] => {
+      const particles: Particle[] = [];
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // 20 partículas grandes
+      for (let i = 0; i < 20; i++) {
+        const initialX = Math.random() * width;
+        const initialY = Math.random() * height;
+
+        particles.push({
+          id: `large-${i}`,
+          x: initialX,
+          y: initialY,
+          initialX,
+          initialY,
+          animateX: Math.random() * width,
+          animateY: Math.random() * height,
+          duration: Math.random() * 10 + 5,
+          delay: Math.random() * 5,
+          type: "large",
+        });
+      }
+
+      // 15 partículas pequenas
+      for (let i = 0; i < 15; i++) {
+        const initialX = Math.random() * width;
+        const initialY = Math.random() * height;
+
+        particles.push({
+          id: `small-${i}`,
+          x: initialX,
+          y: initialY,
+          initialX,
+          initialY,
+          animateX: Math.random() * width,
+          animateY: Math.random() * height,
+          duration: Math.random() * 8 + 4,
+          delay: Math.random() * 3,
+          type: "small",
+        });
+      }
+
+      return particles;
+    };
+
+    setParticles(generateParticles());
+    setMounted(true);
+
+    // Regenerar partículas quando a tela redimensionar
+    const handleResize = () => {
+      setParticles(generateParticles());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const scrollForSection = (id: string) => {
     const element = document.querySelector(`#${id}`);
 
@@ -58,67 +134,35 @@ const Hero = () => {
 
       {/* Animated particles */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-2 w-2 rounded-full bg-blue-400/30"
-            initial={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: 0,
-            }}
-            animate={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={`large-${i}`}
-            className="absolute h-1 w-1 rounded-full bg-cyan-300/40"
-            initial={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: 0,
-            }}
-            animate={{
-              x:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y:
-                Math.random() *
-                (typeof window !== "undefined" ? window.innerHeight : 800),
-              opacity: [0, 0.8, 0],
-              scale: [0.5, 1.5, 0.5],
-            }}
-            transition={{
-              duration: Math.random() * 8 + 4,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
+        {mounted &&
+          particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className={`absolute rounded-full ${
+                particle.type === "large"
+                  ? "h-2 w-2 bg-blue-400/30"
+                  : "h-1 w-1 bg-cyan-300/40"
+              }`}
+              initial={{
+                x: particle.initialX,
+                y: particle.initialY,
+                opacity: 0,
+                ...(particle.type === "small" && { scale: 0.5 }),
+              }}
+              animate={{
+                x: particle.animateX,
+                y: particle.animateY,
+                opacity: particle.type === "large" ? [0, 1, 0] : [0, 0.8, 0],
+                ...(particle.type === "small" && { scale: [0.5, 1.5, 0.5] }),
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+                delay: particle.delay,
+              }}
+            />
+          ))}
       </div>
 
       <motion.div
