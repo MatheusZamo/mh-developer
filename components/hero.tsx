@@ -277,7 +277,6 @@ const Hero = () => {
               href: "https://www.linkedin.com/in/matheuszamo/",
               label: "LinkedIn",
             },
-            { icon: Mail, href: "#", label: "Email" },
           ].map((social) => (
             <motion.a
               key={social.label}

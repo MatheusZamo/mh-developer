@@ -40,8 +40,8 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "contato@mhdev.com",
-      href: "mailto:contato@mhdev.com",
+      value: "contato@mhdeveloper.com.br",
+      href: "mailto:contato@mhdeveloper.com.br",
       color: "text-blue-400",
       description: "Para propostas formais",
     },
@@ -226,7 +226,7 @@ export default function ContactSection() {
                       className="w-full rounded-xl border-blue-600 bg-transparent py-4 text-lg font-semibold text-blue-300 hover:bg-blue-600 hover:text-white"
                     >
                       <a
-                        href="mailto:contato@mhdev.com?subject=Interesse em projeto&body=Olá! Gostaria de conversar sobre um projeto."
+                        href="mailto:contato@mhdeveloper.com.br?subject=Interesse em projeto&body=Olá! Gostaria de conversar sobre um projeto."
                         className="flex items-center justify-center space-x-2"
                       >
                         <Mail className="h-5 w-5" />
