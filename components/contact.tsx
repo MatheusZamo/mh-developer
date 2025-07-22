@@ -40,7 +40,7 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "contato@mhdeveloper.com.br",
+      value: "contato@mhdeveloper",
       href: "mailto:contato@mhdeveloper.com.br",
       color: "text-blue-400",
       description: "Para propostas formais",
